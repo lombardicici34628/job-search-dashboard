@@ -15,7 +15,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY") or st.text_input("🔑 OpenAI API K
 search_term = st.text_input("🔎 Job Title", "JOB-ROLE")
 location = st.text_input("📍 Location(s)", "Bangalore, Hyderabad, Pune")
 results_wanted = st.slider("🎯 Number of Results", 10, 200, 50)
-hours_old = st.slider("🕒 Posted within last (hours)", 24, 168, 72)
+hours_old = st.slider("🕒 Posted within last (hours)", 1, 168, 72)
 
 if st.button("🚀 Run Job Search"):
     with st.spinner("Scraping jobs..."):
