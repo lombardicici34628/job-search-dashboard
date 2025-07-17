@@ -1,4 +1,4 @@
 streamlit
-jobspy==0.1.9
+python-jobspy
 pandas
 openai
