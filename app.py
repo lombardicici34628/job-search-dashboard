@@ -31,19 +31,19 @@ if st.button("🚀 Run Job Search"):
     st.success(f"✅ {len(jobs)} jobs scraped!")
 
 # ✅ Define core columns
-core_columns = [
+    core_columns = [
     "title", "company", "location", "experience_range", "date_posted", "job_url"
-]
+    ]
 
 # 🔍 Display available columns (for debugging)
-st.write("🔎 Available columns:", list(jobs.columns))
+    st.write("🔎 Available columns:", list(jobs.columns))
 
 # ✅ Select only valid (existing) columns
-valid_columns = [col for col in core_columns if col in jobs.columns]
-df = jobs[valid_columns]
+    valid_columns = [col for col in core_columns if col in jobs.columns]
+    df = jobs[valid_columns]
 
 # 📊 Show in Streamlit
-st.dataframe(df, use_container_width=True)
+    st.dataframe(df, use_container_width=True)
 
     if openai_api_key and not df.empty:
         st.subheader("🤖 AI Match (Top Skills/Keywords)")
