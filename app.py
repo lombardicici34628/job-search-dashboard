@@ -36,7 +36,7 @@ if st.button("🚀 Run Job Search"):
     ]
 
 # 🔍 Display available columns (for debugging)
-    st.write("🔎 Available columns:", list(jobs.columns))
+    # st.write("🔎 Available columns:", list(jobs.columns))
 
 # ✅ Select only valid (existing) columns
     valid_columns = [col for col in core_columns if col in jobs.columns]
