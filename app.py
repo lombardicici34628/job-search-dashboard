@@ -12,9 +12,9 @@ st.markdown("Built with `JobSpy`, `OpenAI`, and `Streamlit`")
 openai_api_key = os.getenv("OPENAI_API_KEY") or st.text_input("🔑 OpenAI API Key", type="password")
 
 # Search inputs
-search_term = st.text_input("🔎 Job Title", "QA Automation Engineer")
+search_term = st.text_input("🔎 Job Title", "JOB-ROLE")
 location = st.text_input("📍 Location(s)", "Bangalore, Hyderabad, Pune")
-results_wanted = st.slider("🎯 Number of Results", 10, 100, 50)
+results_wanted = st.slider("🎯 Number of Results", 10, 200, 50)
 hours_old = st.slider("🕒 Posted within last (hours)", 24, 168, 72)
 
 if st.button("🚀 Run Job Search"):
