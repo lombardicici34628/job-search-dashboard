@@ -30,14 +30,13 @@ if st.button("🚀 Run Job Search"):
         )
     st.success(f"✅ {len(jobs)} jobs scraped!")
 
-    # df = jobs[["title", "company_name", "location", "description", "date_posted", "job_url"]]
-    expected_columns = ["title", "company_name", "location", "description", "date_posted", "job_url"]
-# Show available columns
-    st.write("🔎 Available columns:", list(jobs.columns))
-# Only use columns that exist
-    valid_columns = [col for col in expected_columns if col in jobs.columns]
-    df = jobs[valid_columns]
-    st.dataframe(df, use_container_width=True)
+core_columns = [
+    "title", "company", "location", "experience_range", "date_posted", "job_url"
+]
+st.write("🔎 Available columns:", list(jobs.columns))
+valid_columns = [col for col in core_columns if col in jobs.columns]
+df = jobs[valid_columns]
+st.dataframe(df, use_container_width=True)
 
     if openai_api_key and not df.empty:
         st.subheader("🤖 AI Match (Top Skills/Keywords)")
