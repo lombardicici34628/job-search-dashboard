@@ -20,7 +20,7 @@ hours_old = st.slider("🕒 Posted within last (hours)", 24, 168, 72)
 if st.button("🚀 Run Job Search"):
     with st.spinner("Scraping jobs..."):
         jobs = scrape_jobs(
-            site_name=["linkedin", "indeed" , "monster", "glassdoor"],
+            site_name=["indeed", "monster", "glassdoor", "linkedin"],
             search_term=search_term,
             location=location,
             results_wanted=results_wanted,
