@@ -70,27 +70,27 @@ if st.button("🚀 Run Job Search"):
     render_table_with_links(df)
 
     # Optional job card view
-    st.subheader("📄 Job Detail Cards")
-    for index, row in df.iterrows():
-        st.markdown(f"""
-            <div style="margin-bottom: 1rem; padding: 0.6rem; border: 1px solid #444; border-radius: 8px;">
-                <b>{row['title']}</b> — {row['company']}<br>
-                📍 <i>{row['location']}</i> &nbsp;&nbsp; 🕒 {row['date_posted']}<br><br>
-                <a href="{row['job_url']}" target="_blank">
-                    <button style="
-                        background-color:#0099ff;
-                        border:none;
-                        color:white;
-                        padding:10px 16px;
-                        border-radius:6px;
-                        cursor:pointer;
-                        font-size:16px;
-                        font-weight:bold;">
-                        🔗 View Job
-                    </button>
-                </a>
-            </div>
-        """, unsafe_allow_html=True)
+    # st.subheader("📄 Job Detail Cards")
+    # for index, row in df.iterrows():
+    #     st.markdown(f"""
+    #         <div style="margin-bottom: 1rem; padding: 0.6rem; border: 1px solid #444; border-radius: 8px;">
+    #             <b>{row['title']}</b> — {row['company']}<br>
+    #             📍 <i>{row['location']}</i> &nbsp;&nbsp; 🕒 {row['date_posted']}<br><br>
+    #             <a href="{row['job_url']}" target="_blank">
+    #                 <button style="
+    #                     background-color:#0099ff;
+    #                     border:none;
+    #                     color:white;
+    #                     padding:10px 16px;
+    #                     border-radius:6px;
+    #                     cursor:pointer;
+    #                     font-size:16px;
+    #                     font-weight:bold;">
+    #                     🔗 View Job
+    #                 </button>
+    #             </a>
+    #         </div>
+    #     """, unsafe_allow_html=True)
 
     # GPT Skill Matching
     if openai_api_key and "description" in df.columns and not df["description"].dropna().empty:
