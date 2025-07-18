@@ -2,3 +2,4 @@ streamlit
 python-jobspy
 pandas
 openai
+openai==0.28
