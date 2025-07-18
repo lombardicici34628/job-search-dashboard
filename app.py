@@ -32,7 +32,7 @@ if st.button("🚀 Run Job Search"):
 
 # ✅ Define core columns
     core_columns = [
-    "title", "company", "location", "date_posted", "job_url"
+    "title", "company", "location", "date_posted", "job_url", "description"
     ]
 
 # 🔍 Display available columns (for debugging)
