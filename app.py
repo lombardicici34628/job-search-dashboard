@@ -18,18 +18,10 @@ location = st.text_input("📍 Location(s)", "Bangalore, Hyderabad, Pune")
 results_wanted = st.slider("🎯 Number of Results", 10, 200, 50)
 hours_old = st.slider("🕒 Posted within last (hours)", 1, 168, 72)
 
-# Function to render custom table with copy buttons
-def render_copy_table(df):
+# Function to render table with clickable job links
+def render_table_with_links(df):
     df = df.copy()
-    df["Job Link"] = df["job_url"].apply(lambda url: f"""
-        <span style="font-size: 14px;">
-            <a href="{url}" target="_blank">{url}</a>
-            <button onclick="navigator.clipboard.writeText('{url}')" 
-                style="margin-left:10px; padding:4px 8px; background:#0099ff; color:white; border:none; border-radius:4px; cursor:pointer;">
-                📋 Copy
-            </button>
-        </span>
-    """)
+    df["Job Link"] = df["job_url"].apply(lambda url: f'<a href="{url}" target="_blank">{url}</a>')
     display_df = df[["title", "company", "location", "date_posted", "Job Link"]]
     table_id = "job_table_" + str(uuid.uuid4()).replace("-", "")
     st.markdown(f"""
@@ -73,11 +65,11 @@ if st.button("🚀 Run Job Search"):
     valid_columns = [col for col in core_columns if col in jobs.columns]
     df = jobs[valid_columns]
 
-    # Render table with copy link
-    st.subheader("📋 Job Listings (with Copy URL)")
-    render_copy_table(df)
+    # Show table with hyperlink
+    st.subheader("📋 Job Listings (with Clickable Links)")
+    render_table_with_links(df)
 
-    # Render individual job cards (optional)
+    # Optional job card view
     st.subheader("📄 Job Detail Cards")
     for index, row in df.iterrows():
         st.markdown(f"""
@@ -100,7 +92,7 @@ if st.button("🚀 Run Job Search"):
             </div>
         """, unsafe_allow_html=True)
 
-    # GPT Skill Extraction (only if OpenAI key is provided)
+    # GPT Skill Matching
     if openai_api_key and "description" in df.columns and not df["description"].dropna().empty:
         st.subheader("🤖 AI Match (Top Skills/Keywords)")
         sample_desc = "\n\n".join(df["description"].dropna().astype(str).head(5))
